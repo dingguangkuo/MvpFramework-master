@@ -1,7 +1,10 @@
-package com.guangkuo.mvpframework.di.app;
+package com.guangkuo.mvpframework.di.modules;
 
 import android.app.Activity;
 import android.content.Context;
+
+import com.guangkuo.mvpframework.di.scopes.ContextLife;
+import com.guangkuo.mvpframework.di.scopes.PerActivity;
 
 import dagger.Module;
 import dagger.Provides;
