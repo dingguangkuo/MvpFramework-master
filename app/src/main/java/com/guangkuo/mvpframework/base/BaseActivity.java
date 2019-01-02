@@ -28,7 +28,7 @@ import butterknife.Unbinder;
  *
  * @param <P> Presenter
  */
-public abstract class BaseActivity<P extends BaseContract.BasePresenter> extends RxAppCompatActivity implements BaseContract.BaseView {
+public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatActivity implements BaseContract.BaseView {
     @Nullable
     @Inject
     protected P mPresenter;

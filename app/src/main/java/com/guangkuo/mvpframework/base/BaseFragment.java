@@ -31,7 +31,7 @@ import butterknife.Unbinder;
  *
  * @param <P> Presenter
  */
-public abstract class BaseFragment<P extends BaseContract.BasePresenter> extends RxFragment implements BaseContract.BaseView {
+public abstract class BaseFragment<P extends BasePresenter> extends RxFragment implements BaseContract.BaseView {
     private static final String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN";
     @Nullable
     @Inject
