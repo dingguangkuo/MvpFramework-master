@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.guangkuo.mvpframework.R;
@@ -18,6 +18,7 @@ import com.guangkuo.mvpframework.data.remote.error.ApiException;
 import com.guangkuo.mvpframework.di.components.DaggerFragmentComponent;
 import com.guangkuo.mvpframework.di.components.FragmentComponent;
 import com.guangkuo.mvpframework.di.modules.FragmentModule;
+import com.guangkuo.mvpframework.module.user.LoginActivity;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 
@@ -50,7 +51,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends RxFragment i
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initFragmentComponent();
-        ARouter.getInstance().inject(this);
         initInjector();
         attachView();
         if (!NetworkUtils.isConnected()) {
@@ -163,6 +163,6 @@ public abstract class BaseFragment<P extends BasePresenter> extends RxFragment i
 
     @Override
     public void jumpToLogin() {
-        ARouter.getInstance().build("/activity/LoginActivity").navigation();
+        ActivityUtils.startActivity(LoginActivity.class);
     }
 }

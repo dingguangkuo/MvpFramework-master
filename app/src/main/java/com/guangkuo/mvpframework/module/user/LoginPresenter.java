@@ -10,7 +10,9 @@ import com.trello.rxlifecycle2.LifecycleTransformer;
 
 import javax.inject.Inject;
 
-public class LoginPresenter extends BasePresenter<LoginContract.View> implements LoginContract.Presenter {
+public class LoginPresenter
+        extends BasePresenter<LoginContract.View>
+        implements LoginContract.Presenter {
     @Inject
     public LoginPresenter() {
     }

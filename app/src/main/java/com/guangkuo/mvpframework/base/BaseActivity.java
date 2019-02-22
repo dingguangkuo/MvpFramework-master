@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 
-import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.NetworkUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.guangkuo.mvpframework.R;
@@ -15,6 +15,7 @@ import com.guangkuo.mvpframework.data.remote.error.ApiException;
 import com.guangkuo.mvpframework.di.components.ActivityComponent;
 import com.guangkuo.mvpframework.di.components.DaggerActivityComponent;
 import com.guangkuo.mvpframework.di.modules.ActivityModule;
+import com.guangkuo.mvpframework.module.user.LoginActivity;
 import com.trello.rxlifecycle2.LifecycleTransformer;
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
@@ -58,7 +59,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initActivityComponent();
-        ARouter.getInstance().inject(this);
         setContentView(getLayoutId());
         initInjector();
         unbinder = ButterKnife.bind(this);
@@ -106,7 +106,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends RxAppCompatA
      */
     @Override
     public void jumpToLogin() {
-        ARouter.getInstance().build("/activity/LoginActivity").navigation();
+        ActivityUtils.startActivity(LoginActivity.class);
     }
 
     @Override

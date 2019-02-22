@@ -6,10 +6,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.alibaba.android.arouter.facade.annotation.Route;
-import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.utilcode.util.ActivityUtils;
 import com.guangkuo.mvpframework.R;
 import com.guangkuo.mvpframework.base.BaseActivity;
+import com.guangkuo.mvpframework.module.MainActivity;
 import com.jakewharton.rxbinding2.view.RxView;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 
@@ -19,7 +19,6 @@ import butterknife.BindView;
 import io.reactivex.functions.Consumer;
 
 @SuppressLint("CheckResult")
-@Route(path = "/activity/LoginActivity")
 public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View {
     @BindView(R.id.editUsername)
     EditText mEditUsername;
@@ -35,7 +34,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     protected void initInjector() {
-        ARouter.getInstance().inject(this);
         mActivityComponent.inject(this);
     }
 
@@ -80,7 +78,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void onLoadSuccess(Object result) {
-        ARouter.getInstance().build("/activity/MainActivity").navigation();
+        ActivityUtils.startActivity(MainActivity.class);
         finish();
     }
 }

@@ -37,7 +37,8 @@ public class RetrofitManager {
     private static OkHttpClient getOkHttpClient() {
         if (mOkHttpClient == null) {
             synchronized (RetrofitManager.class) {
-                ClearableCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(App.getInstance()));
+                ClearableCookieJar cookieJar = new PersistentCookieJar(
+                        new SetCookieCache(), new SharedPrefsCookiePersistor(App.getInstance()));
                 Cache cache = new Cache(new File(App.getInstance().getCacheDir(), "HttpCache"), 1024 * 1024 * 100);
                 if (mOkHttpClient == null) {
                     OkHttpClient.Builder builder = new OkHttpClient.Builder()
